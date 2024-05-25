@@ -19,15 +19,13 @@ echo "$1, привет!"' > dir2/hello.sh
 # устанавливаем для task/dir2/hello.sh права rwxrw-r--
 chmod 764 dir2/hello.sh
 # сохраняем список файлов task/dir2 в task/dir2/list.txt
-cd dir2
-touch list.txt
+touch dir2/list.txt
 ls -r > list.txt
 cd ..
 # копируем содержимое каталога task/dir2 в каталог task/dir3/dir4
 cp -r dir2 dir3/dir4
 # записываем в task/dir1/summary.txt список файлов с расширением *.txt
 # находящихся в task, включая поддиректории
-touch dir1/summary.txt
 find -iname '*.txt' >  dir1/summary.txt
 # дописываем в task/dir1/summary.txt содержимое task/dir2/list.txt
 cat dir1/summary.txt >> dir2/list.txt
@@ -35,7 +33,7 @@ cat dir1/summary.txt >> dir2/list.txt
 NAME="Всем студентам"
 # запускаем task/dir2/hello.sh с переменной окружения NAME в качестве аргумента
 # вывод скрипта должен дописаться в файл task/dir1/summary.txt
-NAME | cat dir2/hello.sh >> dir1/summary.txt 
+cat NAME dir2/hello.sh >> dir1/summary.txt 
 # перемещаем с переименованием task/dir1/summary.txt в task/Практическое задание
 mv dir1/summary.txt Практическое задание
 # выводим на консоль содержимое файла task/Практическое задание
