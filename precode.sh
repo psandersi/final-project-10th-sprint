@@ -24,15 +24,16 @@ ls dir2 > dir2/list.txt
 cp -r dir2 dir3/dir4
 # записываем в task/dir1/summary.txt список файлов с расширением *.txt
 # находящихся в task, включая поддиректории
-find -iname '*.txt' >  dir1/summary.txt
+find task/ -name '*.txt' >  dir1/summary.txt
 # дописываем в task/dir1/summary.txt содержимое task/dir2/list.txt
 cat dir2/list.txt >> dir1/summary.txt
 # определяем переменную окружения NAME со значением "Всем студентам"
 NAME="Всем студентам"
 # запускаем task/dir2/hello.sh с переменной окружения NAME в качестве аргумента
 # вывод скрипта должен дописаться в файл task/dir1/summary.txt
-cat NAME dir2/hello.sh >> dir1/summary.txt 
+dir2/hello.sh $NAME >> dir1/summary.txt 
 # перемещаем с переименованием task/dir1/summary.txt в task/Практическое задание
+touch Практическое задание
 mv dir1/summary.txt Практическое задание
 # выводим на консоль содержимое файла task/Практическое задание
 cat Практическое задание
